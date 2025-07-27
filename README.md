@@ -25,4 +25,4 @@ A professional CV/resume generator built with plain JavaScript, HTML, and CSS.
 - HTML5, CSS3, JavaScript (ES6)  
 - [html2pdf.js](https://github.com/eKoopmans/html2pdf.js) for PDF export  
 
-![screenshot]([https://your-image-link.com/image.png](https://i.ibb.co/C5Grnk49/Screenshot-2025-07-28-at-12-07-56-AM.png))
+
