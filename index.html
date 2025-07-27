@@ -7,33 +7,64 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>SpotlightCV</h1>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container-nav">
+      <h1 class="logo">SpotlightCV</h1>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#builder">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <!-- Controls (hidden in PDF) -->
-  <div class="controls no-print">
-    <label>
-      Style:
-      <select id="templateSelect" onchange="applyTemplate()">
-        <option value="classic">Classic</option>
-        <option value="modern">Modern</option>
-      </select>
-    </label>
-    <label>
-      Accent:
-      <input type="color" id="colorPicker" value="#2f6fed" onchange="updateAccentColor()">
-    </label>
-  </div>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <h2>Your Career, Center Stage</h2>
+      <p>Build a standout CV in minutes. Choose templates, customize styles, and export to PDF.</p>
+      <button onclick="scrollToBuilder()">Get Started</button>
+    </div>
+  </header>
 
-  <div class="container">
-    <!-- ===== FORM SECTION ===== -->
+  <!-- FEATURES -->
+  <section id="features" class="features">
+    <h2>Features</h2>
+    <div class="features-grid">
+      <div class="feature-item"><h3>Multiple Templates</h3><p>Classic & Modern designs.</p></div>
+      <div class="feature-item"><h3>Live Preview</h3><p>See updates as you type.</p></div>
+      <div class="feature-item"><h3>Accent Picker</h3><p>Pick any highlight color for your CV.</p></div>
+      <div class="feature-item"><h3>Profile Photo</h3><p>Upload a headshot.</p></div>
+      <div class="feature-item"><h3>PDF Export</h3><p>Download a multi‑page PDF.</p></div>
+      <div class="feature-item"><h3>Responsive</h3><p>Works on any device.</p></div>
+    </div>
+  </section>
+
+  <!-- BUILDER -->
+  <section id="builder" class="container">
+    <!-- FULL-WIDTH CONTROLS ROW -->
+    <div class="form-controls no-print">
+      <label>
+        Style:
+        <select id="templateSelect" onchange="applyTemplate()">
+          <option value="classic">Classic</option>
+          <option value="modern">Modern</option>
+        </select>
+      </label>
+      <label>
+        Accent:
+        <input type="color" id="colorPicker" value="#2f6fed" onchange="updateAccentColor()">
+      </label>
+    </div>
+
+    <!-- FORM -->
     <div class="form-section no-print">
       <h2>Personal Info</h2>
       <input type="text" id="name" placeholder="Full Name" />
       <input type="text" id="title" placeholder="Job Title" />
       <input type="email" id="email" placeholder="Email" />
       <input type="text" id="phone" placeholder="Phone" />
-      <label class="file-label">
-        Photo:
+      <label class="file-label">Photo:
         <input type="file" id="profilePic" accept="image/*" />
       </label>
 
@@ -41,22 +72,22 @@
       <textarea id="summary" placeholder="Short professional summary..."></textarea>
 
       <h2>Experience</h2>
-      <textarea id="experience" placeholder="e.g. Accountant at ABC — Jan 2022–Dec 2023\n• Did X\n• Achieved Y"></textarea>
+      <textarea id="experience" placeholder="Company — Dates\n• Duty 1\n• Duty 2"></textarea>
 
       <h2>Education</h2>
-      <textarea id="education" placeholder="e.g. B.Sc. in Computing, XYZ University — 2020"></textarea>
+      <textarea id="education" placeholder="Degree, University — Year"></textarea>
 
       <h2>Achievements</h2>
-      <textarea id="achievements" placeholder="• Best Employee Award (2022)\n• Led new system rollout"></textarea>
+      <textarea id="achievements" placeholder="• Award 1\n• Award 2"></textarea>
 
       <h2>Skills</h2>
-      <textarea id="skills" placeholder="• Accounting • Excel • Auditing"></textarea>
+      <textarea id="skills" placeholder="• Skill A • Skill B"></textarea>
 
       <h2>Languages</h2>
-      <textarea id="languages" placeholder="• English: Advanced\n• Hindi: Proficient"></textarea>
+      <textarea id="languages" placeholder="• English: Advanced"></textarea>
 
       <h2>Hobbies</h2>
-      <textarea id="hobbies" placeholder="• Football • Volunteering"></textarea>
+      <textarea id="hobbies" placeholder="• Hobby 1 • Hobby 2"></textarea>
 
       <div class="buttons">
         <button onclick="generateCV()">Generate CV</button>
@@ -64,7 +95,7 @@
       </div>
     </div>
 
-    <!-- ===== CV PREVIEW SECTION ===== -->
+    <!-- CV PREVIEW -->
     <div class="cv-section classic" id="cvPreview">
       <div class="cv-header">
         <img id="cvPic" src="" alt="Profile Picture" style="display: none;" />
@@ -73,49 +104,31 @@
           <p id="cvTitle">Job Title</p>
         </div>
       </div>
-
       <div class="cv-contact">
         <span id="cvEmail"></span> | <span id="cvPhone"></span>
       </div>
-
-      <div id="cvSummary" class="cv-summary">
-        Your professional summary...
-      </div>
-
+      <div id="cvSummary" class="cv-summary">Your professional summary...</div>
       <div class="cv-grid">
         <div class="cv-main">
-          <section>
-            <h3>Work Experience</h3>
-            <div id="cvExperience"></div>
-          </section>
-          <section>
-            <h3>Education</h3>
-            <div id="cvEducation"></div>
-          </section>
-          <section>
-            <h3>Achievements</h3>
-            <div id="cvAchievements"></div>
-          </section>
+          <section><h3>Experience</h3><div id="cvExperience"></div></section>
+          <section><h3>Education</h3><div id="cvEducation"></div></section>
+          <section><h3>Achievements</h3><div id="cvAchievements"></div></section>
         </div>
         <div class="cv-sidebar">
-          <section>
-            <h3>Skills</h3>
-            <div id="cvSkills"></div>
-          </section>
-          <section>
-            <h3>Languages</h3>
-            <div id="cvLanguages"></div>
-          </section>
-          <section>
-            <h3>Hobbies</h3>
-            <div id="cvHobbies"></div>
-          </section>
+          <section><h3>Skills</h3><div id="cvSkills"></div></section>
+          <section><h3>Languages</h3><div id="cvLanguages"></div></section>
+          <section><h3>Hobbies</h3><div id="cvHobbies"></div></section>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- html2pdf.js for PDF export -->
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 SpotlightCV. All rights reserved.</p>
+  </footer>
+
+  <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
