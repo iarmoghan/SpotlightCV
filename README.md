@@ -26,3 +26,6 @@ A professional CV/resume generator built with plain JavaScript, HTML, and CSS.
 - [html2pdf.js](https://github.com/eKoopmans/html2pdf.js) for PDF export  
 
 
+## 🖼️ Project Screenshot
+
+![SpotlightCV Screenshot](scrrenshot.png)
