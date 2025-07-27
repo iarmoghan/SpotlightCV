@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Professional CV Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>CV Generator</h1>
+
+  <!-- Controls (hidden in PDF) -->
+  <div class="controls no-print">
+    <label>
+      Style:
+      <select id="templateSelect" onchange="applyTemplate()">
+        <option value="classic">Classic</option>
+        <option value="modern">Modern</option>
+      </select>
+    </label>
+    <label>
+      Accent:
+      <input type="color" id="colorPicker" value="#2f6fed" onchange="updateAccentColor()">
+    </label>
+  </div>
+
+  <div class="container">
+    <!-- ===== FORM SECTION ===== -->
+    <div class="form-section no-print">
+      <h2>Personal Info</h2>
+      <input type="text" id="name" placeholder="Full Name" />
+      <input type="text" id="title" placeholder="Job Title" />
+      <input type="email" id="email" placeholder="Email" />
+      <input type="text" id="phone" placeholder="Phone" />
+      <label class="file-label">
+        Photo:
+        <input type="file" id="profilePic" accept="image/*" />
+      </label>
+
+      <h2>Summary</h2>
+      <textarea id="summary" placeholder="Short professional summary..."></textarea>
+
+      <h2>Experience</h2>
+      <textarea id="experience" placeholder="e.g. Accountant at ABC — Jan 2022–Dec 2023\n• Did X\n• Achieved Y"></textarea>
+
+      <h2>Education</h2>
+      <textarea id="education" placeholder="e.g. B.Sc. in Computing, XYZ University — 2020"></textarea>
+
+      <h2>Achievements</h2>
+      <textarea id="achievements" placeholder="• Best Employee Award (2022)\n• Led new system rollout"></textarea>
+
+      <h2>Skills</h2>
+      <textarea id="skills" placeholder="• Accounting • Excel • Auditing"></textarea>
+
+      <h2>Languages</h2>
+      <textarea id="languages" placeholder="• English: Advanced\n• Hindi: Proficient"></textarea>
+
+      <h2>Hobbies</h2>
+      <textarea id="hobbies" placeholder="• Football • Volunteering"></textarea>
+
+      <div class="buttons">
+        <button onclick="generateCV()">Generate CV</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+      </div>
+    </div>
+
+    <!-- ===== CV PREVIEW SECTION ===== -->
+    <div class="cv-section classic" id="cvPreview">
+      <div class="cv-header">
+        <img id="cvPic" src="" alt="Profile Picture" style="display: none;" />
+        <div>
+          <h2 id="cvName">Your Name</h2>
+          <p id="cvTitle">Job Title</p>
+        </div>
+      </div>
+
+      <div class="cv-contact">
+        <span id="cvEmail"></span> | <span id="cvPhone"></span>
+      </div>
+
+      <div id="cvSummary" class="cv-summary">
+        Your professional summary...
+      </div>
+
+      <div class="cv-grid">
+        <div class="cv-main">
+          <section>
+            <h3>Work Experience</h3>
+            <div id="cvExperience"></div>
+          </section>
+          <section>
+            <h3>Education</h3>
+            <div id="cvEducation"></div>
+          </section>
+          <section>
+            <h3>Achievements</h3>
+            <div id="cvAchievements"></div>
+          </section>
+        </div>
+        <div class="cv-sidebar">
+          <section>
+            <h3>Skills</h3>
+            <div id="cvSkills"></div>
+          </section>
+          <section>
+            <h3>Languages</h3>
+            <div id="cvLanguages"></div>
+          </section>
+          <section>
+            <h3>Hobbies</h3>
+            <div id="cvHobbies"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- html2pdf.js for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
